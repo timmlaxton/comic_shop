@@ -9,7 +9,7 @@ const RegisterLogin = () => {
                 <div className="register_login_container">
                     <div className="left">
                     <h1>New Customers</h1>
-                    <p> Monkey monkey monkey tickle rooo</p>
+                    <p> Please click below to set up a new account</p>
                     <MyButton
                         type="default"
                         title="Create Account"
