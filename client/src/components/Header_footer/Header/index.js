@@ -12,7 +12,7 @@ state = {
     page: [
         {
             name: "Home",
-            linkTo:'/',
+            linkTo:'/home',
             public: true
             
         },
@@ -45,7 +45,7 @@ state = {
         },
         {
             name: "Log in",
-            linkTo:'/register_login',
+            linkTo:'/',
             public: true
             
         },
@@ -60,7 +60,7 @@ state = {
     logoutHandler = () => {
         this.props.dispatch(logoutUser()).then(response =>{
             if(response.payload.success){
-                this.props.history.push('/register_login')
+                this.props.history.push('/')
             }
         })
     }
