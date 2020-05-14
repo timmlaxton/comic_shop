@@ -3,6 +3,8 @@ body {
     padding:0;
     font-family: 'Oswald', sans-serif;
     color: #404040;
+    
+    overflow-x:auto;
 }
 
 .out-of-stock {

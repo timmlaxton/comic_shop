@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from '../../../images/logo.png';
-import { Link } from 'react-router-dom';
-import {withRouter} from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+
 
 import { connect } from 'react-redux';
 import {logoutUser} from '../../../actions/user_actions';
@@ -12,7 +12,7 @@ state = {
     page: [
         {
             name: "Home",
-            linkTo:"/",
+            linkTo:'/',
             public: true
             
         },
@@ -60,7 +60,7 @@ state = {
     logoutHandler = () => {
         this.props.dispatch(logoutUser()).then(response =>{
             if(response.payload.success){
-                this.props.history.push('/')
+                this.props.history.push('/register_login')
             }
         })
     }
@@ -102,22 +102,15 @@ state = {
     showLinks = (type) => {
         var list = [];
 
-        if(this.props.user.userData){
             type.forEach((item)=> {
-
-                if(!this.props.user.userData.isAuth){
                     if(item.public === true){
                         list.push(item)
-                    }
-
-                }else{
-                    if(item.name !== 'Log in'){
+                    }else if(this.props.user.userData){
                         list.push(item)
                     }
-                }
 
             });
-        }
+       // }
 
         return list.map((item,i)=>{
             if(item.name !== 'My Cart'){

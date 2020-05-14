@@ -4,7 +4,7 @@ import {Switch, Route} from 'react-router-dom';
 import Auth from './hoc/auth';
 import Layout from './hoc/layout'
 
-// import Comics from './components/Comics';
+import Comics from './components/Shop/comics';
 import Home from './components/Home';
 import RegisterLogin from './components/Register_login';
 import Register from './components/Register_login/register';
@@ -35,14 +35,10 @@ const Routes = () => {
       <Route path="/user/standing_order" exact component={Auth(StandingOrder,true)}/>
       <Route path="/admin/site_info" exact component={Auth(ManageSite,true)}/>
       <Route path="/admin/manage_stock" exact component={Auth(ManageStock,true)}/>
-
-
-
-
       <Route path="/product_detail/:id" exact component={Auth(ProductPage,null)}/>
-      <Route path="/register" exact component={Auth(Register,null)}/>
-      <Route path="/register_login" exact component={Auth(RegisterLogin,false)}/>
-      {/* <Route path="/comic" exact component={Auth(Comics,null)}/> */}
+      <Route path="/register" exact component={Register}/>
+      <Route path="/register_login" exact component={RegisterLogin}/>
+      <Route path="/comics" exact component={Auth(Comics,null)}/>
       <Route path="/" exact component={Home}/>
       
     </Switch>
