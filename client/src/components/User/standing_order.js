@@ -187,7 +187,7 @@ submitForm = (event) =>{
 render() {
     return (
         <UserLayout>
-            <div>YOU HAVE 30 DAYS FROM MAKING YOUR STANDING ORDER TO PAY FOR IT</div>
+            <div>YOU HAVE 30 DAYS FROM CREATING YOUR STANDING ORDER TO PAY FOR IT</div>
             <div>ANY ORDERS UNPAID AFTER THIS PERIOD WILL BE CANCELLED</div>
         <div>
             <form onSubmit={(event)=>  this.submitForm(event)}>
