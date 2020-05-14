@@ -19,16 +19,16 @@ export default function(ComposedClass,reload,adminRoute = null){
                 const user = response.data
                 if(!user.isAuth){
                     if(reload){
-                        this.props.history.push('/register_login')
+                        this.props.history.push('/')
                     }
                 }else{
                     this.props.dispatch(auth(user))
                     this.props.dispatch(setCartItems(user.cart))
                     if(adminRoute && !user.isAdmin){
-                        this.props.history.push('/user/dashboard')
+                        this.props.history.push('/')
                     }else{
                         if(reload === false){
-                            this.props.history.push('/user/dashboard')
+                            this.props.history.push('/')
                         }
                     }
                 }

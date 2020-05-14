@@ -12,7 +12,7 @@ state = {
     page: [
         {
             name: "Home",
-            linkTo:'/',
+            linkTo:"/",
             public: true
             
         },

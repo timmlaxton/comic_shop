@@ -4,11 +4,11 @@ import {Switch, Route} from 'react-router-dom';
 import Auth from './hoc/auth';
 import Layout from './hoc/layout'
 
-import Comics from './components/Shop/comics/index';
-import Home from './components/Home/index.js';
-import RegisterLogin from './components/Register_login/index';
+import Comics from './components/Comics';
+import Home from './components/Home';
+import RegisterLogin from './components/Register_login';
 import Register from './components/Register_login/register';
-import ProductPage from './components/Product/index';
+import ProductPage from './components/Product';
 
 
 import UserDashboard from './components/User/user';
@@ -41,8 +41,8 @@ const Routes = () => {
 
       <Route path="/product_detail/:id" exact component={Auth(ProductPage,null)}/>
       <Route path="/register" exact component={Auth(Register,null)}/>
-      <Route path="/comics" exact component={Auth(Comics,null)}/>
       <Route path="/register_login" exact component={Auth(RegisterLogin,false)}/>
+      <Route path="/comics" exact component={Auth(Comics,null)}/>
       <Route path="/" exact component={Auth(Home,null)}/>
       
     </Switch>
