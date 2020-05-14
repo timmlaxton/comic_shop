@@ -46,7 +46,7 @@ const Footer = ({data}) => {
                                     className="icon"
                                 />
                               <div className="nfo">
-                        <div>Clock</div>
+                        <div>Opening Times</div>
                         <div>{data.siteData[0].hours}</div>
 
                     </div>

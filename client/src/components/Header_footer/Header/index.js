@@ -12,7 +12,7 @@ state = {
     page: [
         {
             name: "Home",
-            linkTo:'/home',
+            linkTo:'/',
             public: true
             
         },
@@ -45,7 +45,7 @@ state = {
         },
         {
             name: "Log in",
-            linkTo:'/',
+            linkTo:'/register_login',
             public: true
             
         },

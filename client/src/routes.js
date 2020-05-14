@@ -40,10 +40,11 @@ const Routes = () => {
 
 
       <Route path="/product_detail/:id" exact component={Auth(ProductPage,null)}/>
-      <Route path="/register" exact component={Register}/>
+      <Route path="/register" exact component={Auth(Register,null)}/>
       <Route path="/comics" exact component={Auth(Comics,null)}/>
-      <Route path="/home" exact component={Auth(Home,null)}/>
-      <Route path="/" exact component={RegisterLogin}/>
+      <Route path="/register_login" exact component={Auth(RegisterLogin,null)}/>
+      <Route path="/" exact component={Auth(Home,null)}/>
+      
     </Switch>
     </Layout>
   );
