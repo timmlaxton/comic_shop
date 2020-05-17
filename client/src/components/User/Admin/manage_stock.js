@@ -22,7 +22,6 @@ const Managestock = (props) => {
         try {
             setProductsStatus(STATUS.PENDING)
             const response = await axios.get(`${PRODUCT_SERVER}?page=${page}&outOfStockOnly=${showOutOfStock ? 1 : 0}`)
-            console.log('products', response)
             if (page === 1) {
                 setProducts(response.data.docs)
             } else {
@@ -43,7 +42,6 @@ const Managestock = (props) => {
 
         products.length ?
         products.map((product,i)=> {
-            //console.log('product?', product.amount, product.amount == 0, product)
             return (
                 <tr key={i} className={`${product.amount < 1 ? 'out-of-stock' : ''}`}>
                 <td>{moment(product.dateOfPurchase).format("MM-DD-YYYY")}</td>
@@ -72,7 +70,7 @@ const Managestock = (props) => {
     
     return (
         <UserLayout>
-            <h1>History purchases</h1>
+            <h1>Stock</h1>
                 <div className="user_nfo_panel">
                     <label>Show out of stock only</label>
                     <input type="checkbox" checked={showOutOfStock} onChange={_onToggleOutOfStock} />

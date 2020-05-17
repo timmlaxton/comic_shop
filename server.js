@@ -194,7 +194,7 @@ app.get('/api/product/articles_by_id',(req,res)=>{
 });
 
 
-app.post('/api/product/article', auth,admin, (req,res)=> {
+app.post('/api/product/article_by_id', auth,admin, (req,res)=> {
     const product = new Product(req.body);
 
     product.save((err,doc)=>{
@@ -206,6 +206,22 @@ app.post('/api/product/article', auth,admin, (req,res)=> {
     })
 });
 
+app.delete('/api/product/article', auth,admin, (req, res)=> {
+   Product.deleteOne({
+       _id: req.params.id}).then(
+           () => {
+               res.status(200).json({
+    });
+        }
+       ).catch(
+           (err)=>{
+               res.staus(400).json({
+
+               })
+           }
+       )
+        });
+  
 // Character
 app.post('/api/product/character', auth,admin,(req,res)=> {
     const character = new Character(req.body);

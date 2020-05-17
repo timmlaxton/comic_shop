@@ -13,6 +13,7 @@ import {
         ADD_SHIRT,
         GET_PRODUCTS_TO_COMICS,
         ADD_PRODUCT,
+        DELETE_PRODUCT,
         CLEAR_PRODUCT,
         GET_PRODUCT_DETAIL,
         CLEAR_PRODUCT_DETAIL
@@ -86,6 +87,15 @@ export function getComics(skip, limit, filters  = []){
 
 }
 
+export function deleteProduct(id){
+    return async dispatch => {
+        const response = axios.delete(`${PRODUCT_SERVER}/article`, id)
+    return dispatch({
+        type:DELETE_PRODUCT,
+        payload: id
+     })
+  }
+}
 
 
 

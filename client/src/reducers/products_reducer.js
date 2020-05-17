@@ -11,6 +11,7 @@
     ADD_SHIRT,
     GET_PRODUCTS_TO_COMICS,
     ADD_PRODUCT,
+    DELETE_PRODUCT,
     CLEAR_PRODUCT,
     GET_PRODUCT_DETAIL,
     CLEAR_PRODUCT_DETAIL,  
@@ -54,7 +55,9 @@ export default function(state={},action){
         
         case ADD_PRODUCT: 
             return {...state, addProduct: action.payload}
-            case CLEAR_PRODUCT:
+        case DELETE_PRODUCT:
+            return {...state, deleteProduct: action.payload}
+        case CLEAR_PRODUCT:
             return {...state,addProduct: action.payload}
         case ADD_PUBLISHER: 
             return {...state, addPublisher: action.payload,
