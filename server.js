@@ -103,10 +103,8 @@ app.post('/api/product/shop/comics',(req,res)=>{
         if(err) return res.status(400).send(err);
         res.status(200).json({
             size: articles.length,
-            articles
-
+            articles: req.body.outOfStock ? articles : articles.filter(article => article.amount > 0)
         })
-
     })
 })
 
@@ -206,9 +204,23 @@ app.post('/api/product/article_by_id', auth,admin, (req,res)=> {
     })
 });
 
+app.post('/api/product/article',auth,admin,(req,res)=>{
+    const product = new Product(req.body);
+
+    product.save((err,doc)=>{
+        if(err) return res.json({success:false,err});
+        res.status(200).json({
+            success: true,
+            article: doc
+        })
+    })
+})
+
 app.delete('/api/product/article', auth,admin, (req, res)=> {
+    console.log(req
+        )
    Product.deleteOne({
-       _id: req.params.id}).then(
+       _id: req.body.ObjectId}).then(
            () => {
                res.status(200).json({
     });

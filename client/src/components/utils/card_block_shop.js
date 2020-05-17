@@ -2,7 +2,7 @@ import React from 'react';
 import Card from '../utils/card';
 
 const CardBlockShop = (props) => {
-
+    console.log("CardBlockShop", props)
     const renderCards = () => (
         props.list ? 
             props.list.map(card=>(
@@ -10,6 +10,7 @@ const CardBlockShop = (props) => {
                     key={card._id}
                     {...card}
                     grid={props.grid}
+                    history={props.history}
                 />
             ))
         :null

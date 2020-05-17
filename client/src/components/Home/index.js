@@ -22,13 +22,13 @@ class Home extends Component {
                 <CardBlock
                     list={this.props.products.byArrival}
                     title="New Arrivals"
-                
+                    history={this.props.history}
                 />
                 <HomePromotion/>
                 <CardBlock
                     list={this.props.products.byBackIssue}
                     title="Back Issues"
-                
+                    history={this.props.history}
                 />
             </div>
         );

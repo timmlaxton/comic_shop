@@ -2,7 +2,7 @@ import React from 'react';
 import Card from'./card';
 
 const CardBlock = (props) => {
-
+console.log("CardBlock", props)
 
 const renderCards = () => (
     props.list ?
@@ -11,8 +11,8 @@ const renderCards = () => (
             
                 <Card
                     key={i}
+                    history={props.history}
                     {...card}
-                
                 />
            
     ))

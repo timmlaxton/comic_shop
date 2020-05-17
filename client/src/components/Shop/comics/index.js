@@ -37,7 +37,8 @@ class BackIssues extends Component {
         this.props.dispatch(getComics(
             this.state.skip,
             this.state.limit,
-            this.state.filters
+            this.state.filters,
+            false
         ))
     }
 
@@ -73,7 +74,8 @@ class BackIssues extends Component {
         this.props.dispatch(getComics(
             0,
             this.state.limit,
-            filters
+            filters,
+            false
         )).then(()=>{
             this.setState({
                 skip:0
@@ -88,7 +90,7 @@ class BackIssues extends Component {
             skip,
             this.state.limit,
             this.state.filters,
-            this.props.products.toShop
+            false
         )).then(()=>{
             this.setState({
                 skip
@@ -172,6 +174,7 @@ class BackIssues extends Component {
                                 size={products.toShopSize}
                                 products={products.toShop}
                                 loadMore={()=> this.loadMoreCards()}
+                                history={this.props.history}
                             />
                          </div>
                       </div>

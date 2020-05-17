@@ -19,6 +19,7 @@ class Card extends Component {
 
     render() {
         const props = this.props
+        console.log("Card", props)
         return (
             <div className={`card_item_wrapper ${props.grid}`}>
                 <div 
@@ -63,11 +64,10 @@ class Card extends Component {
                         <MyButton
                             type="bag_link"
                             runAction={()=>{
-                            props.user.userData.isAuth ?
+                            props.user.loginSuccess ?
                             this.props.dispatch(addToCart(props._id))
                             :
-                                console.log('you need to log in');
-                                                        
+                                props.history.push('/register_login')       
                             }}
                         
                         />

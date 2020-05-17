@@ -70,8 +70,8 @@ export function getBackIssues(){
 }
 
 
-export function getComics(skip, limit, filters  = []){
-    const data ={limit, skip, filters}
+export function getComics(skip, limit, filters = [], outOfStock = true){
+    const data ={limit, skip, filters, outOfStock}
     const request = axios.post(`${PRODUCT_SERVER}/Shop/comics`, data)
         .then(response => {
                 return {
@@ -96,6 +96,7 @@ export function deleteProduct(id){
      })
   }
 }
+
 
 
 

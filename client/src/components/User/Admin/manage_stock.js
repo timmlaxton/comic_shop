@@ -5,6 +5,7 @@ import axios from 'axios'
 import { PRODUCT_SERVER}  from '../../utils/misc';
 
 
+
 const STATUS = {
     IDLE: 'idle',
     SUCCESS: 'success',
@@ -49,8 +50,6 @@ const Managestock = (props) => {
                 <td>{product.amount}</td>
                 <td>{product.sold}</td>
                 <td>£ {product.price}</td>       
-               
-    
                 </tr>
             )
         })
@@ -89,7 +88,9 @@ const Managestock = (props) => {
                     </tbody>
                 </table>              
                 <button onClick={_loadMore}>Load more</button>
+                
             </div>
+            
     </UserLayout>
     );
 };
