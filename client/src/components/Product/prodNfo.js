@@ -14,8 +14,8 @@ const ProdNfo = (props) => {
                 <div className="tag">
                     <div><FontAwesomeIcon icon={faTruck}/></div>
                     <div className="tag_text">
-                        <div>Free shipping</div>
-                        <div>And return</div>
+                        {/* <div>Free shipping</div> */}
+                        {/* <div>And return</div> */}
                     </div>
                 </div>
             :null
@@ -24,16 +24,16 @@ const ProdNfo = (props) => {
                 <div className="tag">
                     <div><FontAwesomeIcon icon={faCheck}/></div>
                     <div className="tag_text">
-                        <div>Available</div>
-                        <div>in store</div>
+                        {/* <div>Available</div> */}
+                        {/* <div>in store</div> */}
                     </div>
                 </div>
             :
                 <div className="tag">
                     <div><FontAwesomeIcon icon={faTimes}/></div>
                     <div className="tag_text">
-                        <div>Not Available</div>
-                        <div>Preorder only</div>
+                        {/* <div>Not Available</div>
+                        <div>Preorder only</div> */}
                     </div>
                 </div>
             }
@@ -60,7 +60,7 @@ const ProdNfo = (props) => {
         <div>
             <h1>{detail.character.name} </h1>
             <h1>{detail.name}</h1>
-            Amount available  <h1> {detail.amount}</h1>
+            Stock Level  <h1> {detail.amount}</h1>
             <p>
                 {detail.description} 
             </p>

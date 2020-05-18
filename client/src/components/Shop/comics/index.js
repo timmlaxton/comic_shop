@@ -8,7 +8,7 @@ import { getComics, getCharacters, getPublishers, getCatergorys} from '../../../
 
 import LoadmoreCards from './loadmoreCards';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faBars} from '@fortawesome/fontawesome-free-solid';
+// import {faBars} from '@fortawesome/fontawesome-free-solid';
 import {faTh} from '@fortawesome/fontawesome-free-solid';
 
 import CollapseCheckbox from '../../utils/collapseCheckbox';
@@ -98,11 +98,11 @@ class BackIssues extends Component {
         })
     }
 
-    handleGrid= () =>{
-        this.setState({
-            grid: !this.state.grid ? 'grid_bars':''
-        })
-    }
+    // handleGrid= () =>{
+    //     this.setState({
+    //         grid: !this.state.grid ? 'grid_bars':''
+    //     })
+    // }
 
 
     render() {
@@ -158,13 +158,13 @@ class BackIssues extends Component {
                                     <FontAwesomeIcon icon={faTh}/>
 
                                 </div>
-                                <div
+                                {/* <div
                                 className={`grid_btn ${!this.state.grid?'': 'active'}`}
                                 onClick={()=> this.handleGrid()}
                                 >
                                     <FontAwesomeIcon icon={faBars}/>
 
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                         <div>

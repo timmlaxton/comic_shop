@@ -6,7 +6,7 @@ const HomeSlider = (props) => {
 
     const slides = [
         {
-            img: 'images/featured/Fan4.jpg',
+            img: 'images/featured/Avengers.jpg',
             lineOne: 'Back Issues',
             lineTwo: '',
             linkTitle: 'Shop now',
