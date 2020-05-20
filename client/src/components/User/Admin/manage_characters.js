@@ -92,7 +92,7 @@ render() {
             <h1>Characters</h1>
             <div className="admin_two_column">
                 <div className="left">
-                    <div className="brands_container">
+                    <div className="characters_container">
                         {this.showCatergoryItems()}
                     </div>
                 </div>

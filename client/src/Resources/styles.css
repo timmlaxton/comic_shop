@@ -888,13 +888,13 @@ footer .business_nfo .nfo {
 .admin_two_column .right {
     flex-grow: 1;
 }
-.brands_container {
+.characters_container {
     height: 200px;
     overflow-y: scroll;
     margin-right: 20px;
 }
 
-.brands_container .category_item {
+.characterss_container .category_item {
     width: 200px;
     font-size: 20px;
     font-weight: 300;

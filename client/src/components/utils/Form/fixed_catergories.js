@@ -40,6 +40,12 @@ const price = [
         "name":"£30 to £34.99",
         "array":[30,3499]
     },
+    {
+        "_id":7,
+        "name":"£35 to £250.00",
+        "array":[35,2500]
+
+    }
 ]
 
 const size = [

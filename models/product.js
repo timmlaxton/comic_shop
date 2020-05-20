@@ -15,6 +15,8 @@ const productSchema = mongoose.Schema({
     issue: { 
         required: true,
         type: Number,
+        type: String,
+        maxlength:100,
         maxlength: 255
     },
     description: {
@@ -46,10 +48,7 @@ const productSchema = mongoose.Schema({
         type: Number,
         maxlength: 100,
         default: 0
-    },
-    shipping: {
-        required: true,
-        type: Boolean
+   
     },
     publish: {
         required: true,

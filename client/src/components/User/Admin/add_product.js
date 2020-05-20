@@ -133,25 +133,7 @@ class AddProduct extends Component {
                 showlabel: true
 
             },
-            shipping: {
-                element: 'select',
-                value: '',
-                config:{
-                    label: 'Shipping',
-                    name: 'shipping_input',
-                    options:[
-                        {key:true,value:'Yes'},
-                        {key:false,value:'No'},
-                    ]
-                },
-                validation:{
-                    required: true
-                },
-                valid: false,
-                touched: false,
-                validationMessage:'',
-                showlabel: true
-            },
+           
             available: {
                 element: 'select',
                 value: '',
@@ -372,11 +354,7 @@ class AddProduct extends Component {
                        change={(element)=> this.updateForm(element)}
                      />
 
-                    <FormField
-                       id={'shipping'}
-                       formdata={this.state.formdata.shipping}
-                       change={(element)=> this.updateForm(element)}
-                     />
+                    
                    
 
                     <FormField
