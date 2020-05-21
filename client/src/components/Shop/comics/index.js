@@ -106,8 +106,9 @@ class BackIssues extends Component {
 
 
     render() {
-        
         const products = this.props.products;
+        let {characters} = products
+        
         return (
             <div>
                 <PageTop
@@ -120,7 +121,7 @@ class BackIssues extends Component {
                            <CollapseCheckbox
                             initState={true}
                             title="Title"
-                            list={products.characters}
+                            list={characters}
                             handleFilters={(filters)=> this.handleFilters(filters, 'character')}
                            /> 
 

@@ -80,7 +80,9 @@ const Managestock = (props) => {
                             <th>Name</th>
                             <th>Stock Amount</th>
                             <th>Sold</th>
-                            <th>Price</th>                           
+                            <th>Price</th>
+                            <th>Sold Total</th>    
+                            <th>Total Sales</th>                       
                         </tr>
                     </thead>
                     <tbody>

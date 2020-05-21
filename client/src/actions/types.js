@@ -18,6 +18,7 @@ export const GET_NEW_ARRIVALS = 'get_new_arrivals';
 export const GET_BACK_ISSUES = 'get_back_issues';
 export const GET_CHARACTERS = 'get_characters';
 export const ADD_CHARACTER = 'add_character';
+export const DELETE_CHARACTER = 'delete_character';
 export const GET_PUBLISHERS = 'get_publishers';
 export const ADD_PUBLISHER = 'add_publisher';
 export const ADD_CATERGORY = 'add_catergory';

@@ -3,6 +3,7 @@
     GET_BACK_ISSUES,
     GET_CHARACTERS,
     ADD_CHARACTER,
+    DELETE_CHARACTER,
     GET_PUBLISHERS,
     ADD_PUBLISHER,
     GET_CATERGORYS,
@@ -35,6 +36,8 @@ export default function(state={},action){
         case ADD_CHARACTER:
             return {...state, addCharacter: action.payload.success , 
                             characters: action.payload.characters}
+        case DELETE_CHARACTER:
+            return {...state, characters: action.payload}
         case GET_PUBLISHERS:
             return {...state, publishers: action.payload}
         case GET_CATERGORYS:
