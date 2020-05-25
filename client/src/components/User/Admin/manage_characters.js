@@ -37,21 +37,27 @@ class ManageCharacters extends Component {
     },
   };
 
+  deleteCharacter = ({name}) => {
+    this.props.dispatch(deleteCharacter(name))
+  }
+
   showCatergoryItems = () => {
-    let arrayData = [];
+    /*let arrayData = [];
     if (this.props.products.characters) {
       this.props.products.characters.map((item, i) => {
         arrayData = arrayData.concat(item.name);
       });
-    }
+    }*/
+    // const arrayData = this.props.products.characters.map(item => item.name)
 
-    return arrayData.sort().map((name, i) => (
-        <div
+    return this.props.products.characters?.map((item, i) => (
+        <a
+          onClick={() => this.deleteCharacter(item)}
           className="category_item"
           key={i}
         >
-          {name}
-        </div>
+          {item.name}
+        </a>
     ))
   };
 

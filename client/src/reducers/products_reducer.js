@@ -21,7 +21,7 @@
 
 
 } from '../actions/types';
-
+import {sortBy} from 'lodash-es'
 
 
 
@@ -32,12 +32,12 @@ export default function(state={},action){
         case GET_BACK_ISSUES:
             return {...state, byBackIssue: action.payload}
         case GET_CHARACTERS:
-            return {...state, characters: action.payload}
+            return {...state, characters: sortBy(action.payload, ['name'])}
         case ADD_CHARACTER:
             return {...state, addCharacter: action.payload.success , 
-                            characters: action.payload.characters}
+                            characters: sortBy(action.payload.characters, ['name'])}
         case DELETE_CHARACTER:
-            return {...state, characters: action.payload}
+            return {...state, characters: state.characters.filter(item => item.name != action.payload)}
         case GET_PUBLISHERS:
             return {...state, publishers: action.payload}
         case GET_CATERGORYS:

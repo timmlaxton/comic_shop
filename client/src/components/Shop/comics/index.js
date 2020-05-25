@@ -108,6 +108,7 @@ class BackIssues extends Component {
     render() {
         const products = this.props.products;
         let {characters} = products
+        console.log('characters', characters)
         
         return (
             <div>

@@ -18,6 +18,7 @@ import {
   GET_PRODUCT_DETAIL,
   CLEAR_PRODUCT_DETAIL,
 } from "./types";
+import {sortBy} from 'lodash-es'
 
 import { PRODUCT_SERVER } from "../components/utils/misc";
 
@@ -106,7 +107,7 @@ export function addProduct(datatoSubmit) {
 export function getCharacters() {
   const request = axios
     .get(`${PRODUCT_SERVER}/characters?sortBy=name`)
-    .then((response) => response.data);
+    .then((response) => response.data)
 
   return {
     type: GET_CHARACTERS,
@@ -132,7 +133,8 @@ export function addCharacter(dataToSubmit, existingCharacters) {
 
 export function deleteCharacter(name) {
   return async (dispatch) => {
-    const response = axios.delete(`${PRODUCT_SERVER}/character/${name}`, name);
+    const response = await axios.delete(`${PRODUCT_SERVER}/character/${name}`, name);
+    console.log('delete response', response)
     return dispatch({
       type: DELETE_CHARACTER,
       payload: name,
@@ -143,7 +145,8 @@ export function deleteCharacter(name) {
 export function getPublishers() {
   const request = axios
     .get(`${PRODUCT_SERVER}/publishers`)
-    .then((response) => response.data);
+    .then((response) => response.data)
+    .then(data => sortBy(data, ['name']))
 
   return {
     type: GET_PUBLISHERS,

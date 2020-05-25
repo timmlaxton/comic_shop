@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useMemo} from 'react';
 import moment from 'moment'
 import UserLayout from '../../../hoc/user';
 import axios from 'axios'
@@ -18,15 +18,37 @@ const Managestock = (props) => {
     const [productsStatus, setProductsStatus] = useState(STATUS.IDLE)
     const [page, setPage] = useState(1)
     const [showOutOfStock, setShowOutOfStock] = useState(false)
+    const [selectedDate, setSelectedDate] = useState('')
+    const {totalSold, totalSales} = useMemo(() => products.reduce((acc, {sold, price}) => {
+        acc.totalSold += sold
+        acc.totalSales += (sold * price)
+        return acc
+    }, {
+        totalSold: 0,
+        totalSales: 0
+    }), [products])
 
-    const _fetchProducts = async (page, showOutOfStock) => {
+    console.log('totals', totalSold, totalSales)
+
+    const _fetchProducts = async (page, showOutOfStock, selectedDate) => {
         try {
             setProductsStatus(STATUS.PENDING)
-            const response = await axios.get(`${PRODUCT_SERVER}?page=${page}&outOfStockOnly=${showOutOfStock ? 1 : 0}`)
+           /* const response = await axios.get(`${PRODUCT_SERVER}?page=${page}&outOfStockOnly=${showOutOfStock ? 1 : 0}&selectedDate=${moment(selectedDate).format('hh:mm A')}`, {*/
+            const response = await axios.get(`${PRODUCT_SERVER}`, {
+                params: {
+                    page,
+                    outOfStockOnly: showOutOfStock ? 1 : 0,
+                    ...selectedDate && {selectedDate: selectedDate}
+                }
+            })
+            const data = response.data.docs.map(product => {
+                product.formattedDateOfPurchase = moment(product.createdAt).format("MM-DD-YYYY")
+                return product
+            })
             if (page === 1) {
-                setProducts(response.data.docs)
+                setProducts(data)
             } else {
-                setProducts(products => [...products, ...response.data.docs])
+                setProducts(products => [...products, ...data])
             }
             setProductsStatus(STATUS.SUCCESS)
         } catch (error) {
@@ -36,8 +58,8 @@ const Managestock = (props) => {
     }
 
     useEffect(() => {
-        _fetchProducts(page, showOutOfStock)
-    }, [page, showOutOfStock])
+        _fetchProducts(page, showOutOfStock, selectedDate)
+    }, [page, showOutOfStock, selectedDate])
     console.log('props in manage stock', props)
     const renderBlocks = (products) => (
 
@@ -45,11 +67,12 @@ const Managestock = (props) => {
         products.map((product,i)=> {
             return (
                 <tr key={i} className={`${product.amount < 1 ? 'out-of-stock' : ''}`}>
-                <td>{moment(product.dateOfPurchase).format("MM-DD-YYYY")}</td>
+                <td><a onClick={() => setSelectedDate(product.createdAt)}>{product.formattedDateOfPurchase}</a></td>
                 <td> {product.name}</td>
                 <td>{product.amount}</td>
                 <td>{product.sold}</td>
-                <td>£ {product.price}</td>       
+                <td style={{width: '55px'}}>{`£ ${product.price}`}</td>
+                <td>£ {(product.sold) * product.price}</td>       
                 </tr>
             )
         })
@@ -73,6 +96,7 @@ const Managestock = (props) => {
                 <div className="user_nfo_panel">
                     <label>Show out of stock only</label>
                     <input type="checkbox" checked={showOutOfStock} onChange={_onToggleOutOfStock} />
+                    {selectedDate ? (<p>Filtering by date {moment(selectedDate).format('MM-DD-YYYY')}</p>) : null}
                 <table>
                     <thead>
                         <tr>
@@ -82,7 +106,6 @@ const Managestock = (props) => {
                             <th>Sold</th>
                             <th>Price</th>
                             <th>Sold Total</th>    
-                            <th>Total Sales</th>                       
                         </tr>
                     </thead>
                     <tbody>

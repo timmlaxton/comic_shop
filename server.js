@@ -9,7 +9,7 @@ const mongoose = require('mongoose');
 const async = require('async');
 require('dotenv').config();
 const path = require('path');
-
+const moment = require('moment')
 
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI)
@@ -110,17 +110,24 @@ app.post('/api/product/shop/comics',(req,res)=>{
 
 
 app.get('/api/product', async (req, res) => {
-    const {order = 'asc', sort = {}, limit = 20, page = 1, outOfStockOnly = 0} = req.query 
+    const {order = 'asc', sort = {}, limit = 20, page = 1, outOfStockOnly = 0, selectedDate} = req.query 
     const options = {
         order,
         sort,
         limit,
         page
     }
-
+    const date = moment(selectedDate)
+    console.log('Date format', date.format('MM-DD-YY'))
     const query = {
-        ...outOfStockOnly === '1' && {amount: 0} 
+        ...outOfStockOnly === '1' && {amount: 0},
+        ...(!!selectedDate) && {createdAt: {
+            $lt: date.endOf('day').toDate(),
+            $gte: date.startOf('day').toDate()
+        }}
     }
+
+    console.log('query', query)
 
     const response = await Product.paginate(query, options)
     console.log('product pagination', response)
@@ -248,12 +255,21 @@ app.post('/api/product/character', auth,admin,(req,res)=> {
 });
 
 app.get('/api/product/characters', (req,res)=> {
+
     Character.find({},(err, characters)=> {
         if(err) return res.status(400).send(err);
         res.status(200).send(characters)
     })
 });
 
+
+app.delete('/api/product/character/:name', (req,res)=> {
+    const {name} = req.params;
+    Character.findOneAndDelete({name}, (err, character) => {
+        if(err) return res.status(400).send(err);
+        res.status(200).send(character)
+    } )
+})
 
 //Publisher
 app.post('/api/product/publisher',auth,admin,(req,res)=>{
@@ -296,6 +312,7 @@ app.get('/api/product/catergorys', (req,res)=> {
         res.status(200).send(catergorys)
     })
 });
+
 
 
 //Shirt

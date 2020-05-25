@@ -905,6 +905,10 @@ footer .business_nfo .nfo {
     color: #fff;
 }
 
+.category_item {
+    display: block;
+}
+
 .dropzone {
     border: 1px solid #e5e5e5;
     margin-bottom: 40px;

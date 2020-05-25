@@ -58,12 +58,12 @@ class Paypal extends Component {
             console.log(JSON.stringify(err))
         }
 
-        var env = 'production';
+        var env = 'sandbox';
         var currency = 'GBP';
         var total = this.props.toPay;
 
         const client = {
-         //sandbox:'AQ2A_QemxBJ_6VjiQuSiOCtoqfjwdLGZusiAWWTNBAHNrxC9PVjALgOlHEpHA9Qn8pbQSrDbOwD25OTc',
+         sandbox:'AQ2A_QemxBJ_6VjiQuSiOCtoqfjwdLGZusiAWWTNBAHNrxC9PVjALgOlHEpHA9Qn8pbQSrDbOwD25OTc',
             //production: 
         }
 

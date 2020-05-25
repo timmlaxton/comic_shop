@@ -108,7 +108,7 @@ class Register extends Component {
     
 
 
-    submitForm= (event) =>{
+    submitForm = (event) =>{
         event.preventDefault();
         
         var dataToSubmit = generateData(this.state.formdata,'register');
