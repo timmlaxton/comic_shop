@@ -9,7 +9,7 @@ const mongoose = require('mongoose');
 const async = require('async');
 require('dotenv').config();
 const path = require('path');
-// const moment = require('moment')
+const moment = require('moment')
 
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI)
