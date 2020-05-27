@@ -19,7 +19,7 @@ class Card extends Component {
 
     render() {
         const props = this.props
-        console.log("Card", props)
+        
         return (
             <div className={`card_item_wrapper ${props.grid}`}>
                 <div 
@@ -32,9 +32,11 @@ class Card extends Component {
                 <div className="action_container">
                 <div className="tags">
                     { props.character ? 
+                      
                     <div className="character">{props.character.name}</div> : null}
+                    <div className="title">{props.title}</div> 
                     <div className="publisher">{props.publisher.name}</div>
-                    <div className="issue">Issue{props.issue}</div>
+                    <div className="issue">Issue{ props.issue}</div>
                     <div className="price">£{props.price}</div>
                     </div>
                     

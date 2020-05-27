@@ -20,6 +20,7 @@ const links = [
         linkTo: "/user/standing_order"
 
     }
+    
 ]
 
 const admin = [
@@ -38,6 +39,10 @@ const admin = [
     {
         name: 'Manage stock',
         linkTo: "/admin/manage_stock"
+    },
+    {   name: 'Standing Order',
+        linkTo: "/admin/standing_order"
+
     }
 ]
 

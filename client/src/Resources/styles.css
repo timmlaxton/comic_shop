@@ -500,24 +500,25 @@ footer .business_nfo .nfo {
 }
 
 .card_item_wrapper .tags .character,
+.card_item_wrapper .tags .title,
 .card_item_wrapper .tags .catergory,
-.card_item_wrapper .tags .issue,
+.card_item_wrapper .tags .issue ,
 .card_item_wrapper .tags .publisher,
 .card_item_wrapper .tags .price {
     text-align: center;
     margin: 5px;
 }
 
-.card_item_wrapper .tags .brand {
-    font-size: 17px;
-    font-weight: 700;
-    color: #2196F3;
-}
+
 
 .card_item_wrapper .tags .name {
     font-size: 21px;
     font-weight: 700;
 }
+
+
+
+
 
 .card_item_wrapper .tags .price {
     font-weight: 300;
@@ -567,12 +568,10 @@ footer .business_nfo .nfo {
     padding: 5px 20px;
 }
 
-.card_item_wrapper.grid_bars .tags .brand {
-    font-size: 21px;
-}
 
 
-.card_item_wrapper.grid_bars .tags .brand,
+
+
 .card_item_wrapper.grid_bars .tags .name {
     float:left
 }

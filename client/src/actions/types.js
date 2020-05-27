@@ -16,6 +16,7 @@ export const ORDER_USER = 'order_user'
 
 export const GET_NEW_ARRIVALS = 'get_new_arrivals';
 export const GET_BACK_ISSUES = 'get_back_issues';
+export const GET_TRADES = 'get_trades';
 export const GET_CHARACTERS = 'get_characters';
 export const ADD_CHARACTER = 'add_character';
 export const DELETE_CHARACTER = 'delete_character';
@@ -23,6 +24,7 @@ export const GET_PUBLISHERS = 'get_publishers';
 export const ADD_PUBLISHER = 'add_publisher';
 export const ADD_CATERGORY = 'add_catergory';
 export const GET_CATERGORYS = 'get_catergorys';
+export const GET_TITLES = 'get_titles';
 export const GET_SHIRTS = 'get_shirts';
 export const ADD_SHIRT = 'add_shirt';
 export const GET_PRODUCTS_TO_COMICS = 'get_products_to_comics';

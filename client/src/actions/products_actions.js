@@ -2,6 +2,7 @@ import axios from "axios";
 import {
   GET_NEW_ARRIVALS,
   GET_BACK_ISSUES,
+  GET_TRADES,
   GET_CHARACTERS,
   ADD_CHARACTER,
   DELETE_CHARACTER,
@@ -9,6 +10,7 @@ import {
   ADD_PUBLISHER,
   ADD_CATERGORY,
   GET_CATERGORYS,
+  GET_TITLES,
   GET_SHIRTS,
   ADD_SHIRT,
   GET_PRODUCTS_TO_COMICS,
@@ -56,12 +58,25 @@ export function getNewArrivals() {
 export function getBackIssues() {
   const request = axios
     .get(
-      `${PRODUCT_SERVER}/articles?sortBy=sold&order=desc&limit=4&filterBy=catergory:5ea1c282f7505a220c5dd84f`
+      `${PRODUCT_SERVER}/articles?sortBy=created&order=desc&limit=4&filterBy=catergory:5ea1c282f7505a220c5dd84f&filterBy=quantity`
     )
     .then((response) => response.data);
 
   return {
     type: GET_BACK_ISSUES,
+    payload: request,
+  };
+}
+
+export function getTrades() {
+  const request = axios
+    .get(
+      `${PRODUCT_SERVER}/articles?sortBy=created&order=desc&limit=4&filterBy=catergory:5ea1c28bf7505a220c5dd850`
+    )
+    .then((response) => response.data);
+
+  return {
+    type: GET_TRADES,
     payload: request,
   };
 }
@@ -150,6 +165,18 @@ export function getPublishers() {
 
   return {
     type: GET_PUBLISHERS,
+    payload: request,
+  };
+}
+
+export function getTitles() {
+  const request = axios
+    .get(`${PRODUCT_SERVER}/titles`)
+    .then((response) => response.data)
+    .then(data => sortBy(data, ['name']))
+
+  return {
+    type: GET_TITLES,
     payload: request,
   };
 }

@@ -5,7 +5,7 @@ import { update, generateData, isFormValid, populateOptionFields, resetFields } 
 import FileUpload from '../../utils/Form/fileupload';
 
 import {connect} from 'react-redux'
-import {getCharacters, getPublishers, getCatergorys, addProduct, clearProduct } from '../../../actions/products_actions'
+import {getCharacters, getPublishers, getCatergorys, addProduct, clearProduct, getTitles } from '../../../actions/products_actions'
 
 class AddProduct extends Component {
 
@@ -21,6 +21,23 @@ class AddProduct extends Component {
                     name: 'name_input',
                     type: 'text',
                     placeholder: 'Enter title'
+                },
+                validation:{
+                    required: true
+                },
+                valid: false,
+                touched: false,
+                validationMessage:'',
+                showlabel: true
+            },
+            title: {
+                element: 'input',
+                value: '',
+                config:{
+                    label: 'Product title ',
+                    name: 'title_input',
+                    type: 'text',
+                    placeholder: 'Enter title '
                 },
                 validation:{
                     required: true
@@ -269,6 +286,13 @@ class AddProduct extends Component {
             
         })
 
+        this.props.dispatch(getTitles()).then( response => {
+            const newFormData = populateOptionFields(formdata,this.props.products.titles, 'title');            
+            this.updateFields(newFormData)
+            
+            
+        })
+
         this.props.dispatch(getPublishers()).then( response => {
             const newFormData = populateOptionFields(formdata,this.props.products.publishers, 'publisher');            
             this.updateFields(newFormData)
@@ -318,6 +342,12 @@ class AddProduct extends Component {
                    <FormField
                        id={'name'}
                        formdata={this.state.formdata.name}
+                       change={(element)=> this.updateForm(element)}
+                     />
+
+                        <FormField
+                       id={'title'}
+                       formdata={this.state.formdata.title}
                        change={(element)=> this.updateForm(element)}
                      />
 

@@ -1,14 +1,12 @@
 import React from 'react';
-import Card from'./card';
+import Card from './card';
 
 const CardBlock = (props) => {
-console.log("CardBlock", props)
+
 
 const renderCards = () => (
     props.list ?
-    props.list.map((card,i)=>(
-
-            
+    props.list.map((card, i)=>(
                 <Card
                     key={i}
                     history={props.history}

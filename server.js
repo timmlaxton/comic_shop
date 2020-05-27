@@ -166,7 +166,7 @@ app.get('/api/product/articles', (req,res)=> {
     Product.find(query).
     populate('character').
     populate('publisher').
-    populate('category').
+    populate('catergory').
     sort([[sortBy,order]]).
     limit(limit).
     exec((err,articles)=>{

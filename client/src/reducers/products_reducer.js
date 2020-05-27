@@ -1,6 +1,7 @@
  import {
     GET_NEW_ARRIVALS,
     GET_BACK_ISSUES,
+    GET_TRADES,
     GET_CHARACTERS,
     ADD_CHARACTER,
     DELETE_CHARACTER,
@@ -8,6 +9,7 @@
     ADD_PUBLISHER,
     GET_CATERGORYS,
     ADD_CATERGORY,
+    GET_TITLES,
     GET_SHIRTS,
     ADD_SHIRT,
     GET_PRODUCTS_TO_COMICS,
@@ -31,6 +33,8 @@ export default function(state={},action){
             return {...state, byArrival: action.payload}
         case GET_BACK_ISSUES:
             return {...state, byBackIssue: action.payload}
+        case GET_TRADES:
+            return {...state, byTrades: action.payload}
         case GET_CHARACTERS:
             return {...state, characters: sortBy(action.payload, ['name'])}
         case ADD_CHARACTER:
@@ -45,6 +49,8 @@ export default function(state={},action){
         case ADD_CATERGORY:
                 return {...state, addCatergory: action.payload.success , 
                         catergorys: action.payload.catergorys}
+        case GET_TITLES:
+                return {...state, titles: action.payload}
         case GET_SHIRTS:
                 return {...state, catergorys: action.payload}
         case ADD_SHIRT:

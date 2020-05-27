@@ -7,6 +7,11 @@ const productSchema = mongoose.Schema({
         type: String,
         maxlength:100
     },
+    title:{
+        required: true,
+        type: String,
+        maxlength:100
+    },
     character:{
         type: Schema.Types.ObjectId,
         ref: 'Character',
