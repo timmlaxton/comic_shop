@@ -644,6 +644,15 @@ app.post('/api/users/standing_order',(req,res)=>{
     })
 });
 
+app.get('/api/users/standing_order',(req,res)=>{
+    Standing.find({},(err, standing) => {
+        if(err) return res.status(400).send(err);
+        res.status(200).send(standing)
+    });
+});
+
+
+
 // default
 
 //if( process.env.NODE_ENV === 'production' ){

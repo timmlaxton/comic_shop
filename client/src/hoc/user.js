@@ -41,7 +41,7 @@ const admin = [
         linkTo: "/admin/manage_stock"
     },
     {   name: 'Standing Order',
-        linkTo: "/admin/standing_order"
+        linkTo: "/admin/received_orders"
 
     }
 ]
