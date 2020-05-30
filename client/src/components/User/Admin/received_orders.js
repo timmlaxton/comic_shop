@@ -23,7 +23,7 @@ class Receivedorders extends Component {
         return (
             <UserLayout> 
             <h1>Recevied Orders</h1>
-                <div className="user_nfo_panel">
+                <div className="received_orders">
                 <table>
                     <tr>
                             <th>Name</th>
@@ -45,7 +45,7 @@ class Receivedorders extends Component {
                             <td> {standing.postcode}</td>
                             <td> {standing.phone}</td>
                             <td> {standing.email}</td>
-                            <td> {standing.order}</td>
+                            <td> {standing.description}</td>
                         </tr>
                     )}
                     </table>

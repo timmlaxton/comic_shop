@@ -36,7 +36,7 @@ class Card extends Component {
                     <div className="character">{props.character.name}</div> : null}
                     <div className="title">{props.title}</div> 
                     <div className="publisher">{props.publisher.name}</div>
-                    <div className="issue">Issue{ props.issue}</div>
+                    <div className="issue">Issue { props.issue}</div>
                     <div className="price">£{props.price}</div>
                     </div>
                     

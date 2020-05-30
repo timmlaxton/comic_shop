@@ -11,6 +11,12 @@ body {
     background-color: #E53E3E !important;
 }
 
+
+
+received_orders {
+    width: 500px;
+}
+
 .no_stock {
     font-style: bold;
 }
