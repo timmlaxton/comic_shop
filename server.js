@@ -135,14 +135,14 @@ app.get('/api/product', async (req, res) => {
 })
 
 
-app.put('/api/product', async (req, res) => {
+app.put('/api/product/articles/:id', async (req, res) => {
     try {
       var  product  = await Product.findById(req.params.id).exec();
         product.set(req.body);
         var result = await product.save(); 
-        resposne.send(result);  
+        res.send(result);  
     } catch (error) {
-        resposne.status(400).send(error)
+        res.status(400).send(error)
     }
 });
 
@@ -154,8 +154,7 @@ app.get('/api/product/articles', (req,res)=> {
         sortBy = '_id',
         filterBy = null
     } = req.query
-    /*var order = req.query.order ? req.query.order : "asc";
-    var sortBy = req.query.sortby ? req.query.sortBy : "_id";*/
+    
     var limit = req.query.limit ? parseInt(req.query.limit) : 100;
     let query = {}
 
@@ -236,11 +235,9 @@ app.post('/api/product/article',auth,admin,(req,res)=>{
     })
 })
 
-app.delete('/api/product/article', auth,admin, (req, res)=> {
-    console.log(req
-        )
+app.delete('/api/product/articles/:id', auth,admin, (req, res)=> {
    Product.deleteOne({
-       _id: req.body.ObjectId}).then(
+       _id: req.params.id}).then(
            () => {
                res.status(200).json({
     });

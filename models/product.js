@@ -62,7 +62,13 @@ const productSchema = mongoose.Schema({
     images: {
         type: Array,
         default: []
+    },
+    available:{
+        type: String,
+        maxlength: 100,
+        required: true
     }
+
 }, {timestamps:true,  collection: 'Product'});
 productSchema.plugin(mongoosePaginate)
 const Product = mongoose.model('Product', productSchema);
