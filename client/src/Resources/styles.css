@@ -13,10 +13,6 @@ body {
 
 
 
-received_orders {
-    width: 500px;
-}
-
 .no_stock {
     font-style: bold;
 }
@@ -304,6 +300,10 @@ header .container .right .bottom {
     padding: 10px 20px;
 }
 
+
+.received {
+    width: 800px;
+}
 
 
 header .cart_link {

@@ -23,7 +23,7 @@ class Receivedorders extends Component {
         return (
             <UserLayout> 
             <h1>Recevied Orders</h1>
-                <div className="received_orders">
+                <div className="received">
                 <table>
                     <tr>
                             <th>Name</th>
