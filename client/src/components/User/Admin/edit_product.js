@@ -357,12 +357,11 @@ class EditProduct extends Component {
    
 
     render() {
-        console.log("========>", this.state.formdata)
-        console.log('props in edit', this.props)
+        
         return (
             <UserLayout>
                <div>
-                   <h1>Add product</h1>
+                   <h1>Edit products</h1>
 
                    <form>
 
