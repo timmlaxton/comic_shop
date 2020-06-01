@@ -113,6 +113,7 @@ class BackIssues extends Component {
 
 
         console.log('characters', characters)
+        console.log('props in comics', this.props)
         
         return (
             <div>
@@ -125,8 +126,7 @@ class BackIssues extends Component {
 
                     
                   
-                   
-
+    
 
                         <div className="left">
                            <CollapseCheckbox
@@ -187,6 +187,7 @@ class BackIssues extends Component {
                                 products={products.toShop}
                                 loadMore={()=> this.loadMoreCards()}
                                 history={this.props.history}
+                                user={this.props.user}
                             />
                          </div>
                       </div>
@@ -199,7 +200,8 @@ class BackIssues extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        products: state.products
+        products: state.products,
+        user: state.user
     }
 }
 

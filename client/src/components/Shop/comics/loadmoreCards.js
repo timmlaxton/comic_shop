@@ -9,6 +9,7 @@ const LoadmoreCards = (props) => {
                 grid={props.grid}
                 list={props.products}
                 history={props.history}
+                user={props.user}
             />
             </div>
             {

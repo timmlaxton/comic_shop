@@ -20,7 +20,7 @@ import StandingOrder from './components/User/standing_order';
 import ManageSite from './components/User/Admin/manage_site';
 import ManageStock from'./components/User/Admin/manage_stock';
 import ReceivedOrders from './components/User/Admin/received_orders';
-
+import EditProductPage from './components/User/Admin/edit_product'
 
 
 const Routes = () => {
@@ -38,6 +38,7 @@ const Routes = () => {
       <Route path="/admin/manage_stock" exact component={Auth(ManageStock,true)}/>
       <Route path="/admin/received_orders" exact component={Auth(ReceivedOrders,true)}/>
       <Route path="/product_detail/:id" exact component={ProductPage}/>
+      <Route path="/product_detail/:id/edit" exact component={EditProductPage}/>
       <Route path="/register" exact component={Register}/>
       <Route path="/register_login" exact component={RegisterLogin}/>
       <Route path="/comics" exact component={Comics}/>

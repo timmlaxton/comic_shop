@@ -21,15 +21,15 @@ import {
   CLEAR_PRODUCT_DETAIL,
   EDIT_PRODUCT_DETAIL,
 } from "./types";
+
 import {sortBy} from 'lodash-es'
 
 import { PRODUCT_SERVER } from "../components/utils/misc";
-import { response } from "express";
 
 export function editProductDetail(id) {
   const request = axios
   .put(`${PRODUCT_SERVER}//articles_by_id?id=${id}&type=single`)
-  .then((resposne) => {
+  .then((response) => {
     return response.data[0];
   });
 
@@ -73,7 +73,7 @@ export function getNewArrivals() {
 export function getBackIssues() {
   const request = axios
     .get(
-      `${PRODUCT_SERVER}/articles?sortBy=created&order=desc&limit=4&filterBy=catergory:5ea1c282f7505a220c5dd84f&filterBy=quantity`
+      `${PRODUCT_SERVER}/articles?sortBy=created&order=desc&limit=4&filterBy=catergory:5ea1c282f7505a220c5dd84f`
     )
     .then((response) => response.data);
 

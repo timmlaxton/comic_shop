@@ -3,6 +3,7 @@ import MyButton from './button';
 
 import {connect} from 'react-redux';
 import {addToCart}from '../../actions/cart_actions';
+import {Link} from 'react-router-dom'
 
 class Card extends Component {
 
@@ -19,6 +20,7 @@ class Card extends Component {
 
     render() {
         const props = this.props
+        console.log('props in card', props)
         
         return (
             <div className={`card_item_wrapper ${props.grid}`}>
@@ -38,6 +40,11 @@ class Card extends Component {
                     <div className="publisher">{props.publisher.name}</div>
                     <div className="issue">Issue { props.issue}</div>
                     <div className="price">£{props.price}</div>
+                    {props.user.userData && props.user.userData.isAdmin ? (
+                        <div>
+                            <Link to={`/product_detail/${props._id}/edit`}>Edit product</Link>
+                        </div>
+                    ) : null}
                     </div>
                     
                 { props.grid ?

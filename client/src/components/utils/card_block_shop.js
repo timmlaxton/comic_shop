@@ -11,6 +11,7 @@ const CardBlockShop = (props) => {
                     {...card}
                     grid={props.grid}
                     history={props.history}
+                    user={props.user}
                 />
             ))
         :null

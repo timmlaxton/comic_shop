@@ -17,6 +17,7 @@ class Home extends Component {
     }
 
     render() {
+        console.log('in home', this.props.user)
         return (
             <div>
                 <HomeSlider/>
@@ -44,7 +45,8 @@ class Home extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        products: state.products
+        products: state.products,
+        user: state.user
     }
 }
 

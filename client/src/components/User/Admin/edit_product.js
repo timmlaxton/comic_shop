@@ -3,11 +3,11 @@ import UserLayout from '../../../hoc/user';
 import FormField from '../../utils/Form/formfield';
 import { update, generateData, isFormValid, populateOptionFields, resetFields } from '../../utils/Form/formActions';
 import FileUpload from '../../utils/Form/fileupload';
-
+import axios from 'axios'
 import {connect} from 'react-redux'
 import {getCharacters, getPublishers, getCatergorys, addProduct, clearProduct, getTitles } from '../../../actions/products_actions'
-
-class AddProduct extends Component {
+import { PRODUCT_SERVER}  from '../../utils/misc'
+class EditProduct extends Component {
 
     state={
         formError:false,
@@ -279,6 +279,8 @@ class AddProduct extends Component {
     componentDidMount(){
         const formdata =  this.state.formdata;
 
+        this.fetchProduct(this.props.match.params.id)
+
         this.props.dispatch(getCharacters()).then( response => {
             const newFormData = populateOptionFields(formdata,this.props.products.characters, 'character');            
             this.updateFields(newFormData)
@@ -295,17 +297,36 @@ class AddProduct extends Component {
 
         this.props.dispatch(getPublishers()).then( response => {
             const newFormData = populateOptionFields(formdata,this.props.products.publishers, 'publisher');            
-            this.updateFields(newFormData)
-            
-            
+            this.updateFields(newFormData)          
         })
 
         this.props.dispatch(getCatergorys()).then( response => {
             const newFormData = populateOptionFields(formdata,this.props.products.catergorys, 'catergory');            
-            this.updateFields(newFormData)
-            
-            
+            this.updateFields(newFormData)               
         })
+    }
+
+    fetchProduct = async (id) => {
+        console.log('in fetch product', id)
+        try {
+            const response = await axios.get(`${PRODUCT_SERVER}/articles_by_id?id=${id}`)
+            console.log('resposne', response)
+            const formdata = JSON.parse(JSON.stringify(this.state.formdata))
+            formdata.Titles = formdata.name
+            formdata.amount = formdata.stock
+            for (const [key, value] of Object.entries(response.data[0])) {
+                console.log('in loop', key, value)
+                if (Reflect.has(formdata, key)) {
+                    formdata[key].value = value
+                }
+            }
+            console.log('formdata?', formdata)
+            this.setState({
+                formdata
+            })
+        } catch (error) {
+            console.error(error)
+        }
     }
 
     imagesHandler = (images) => {
@@ -320,10 +341,24 @@ class AddProduct extends Component {
         })
     }
 
+    deleteProduct = async () => {
+        const product_id = this.props.match.params.id
+        try {
+            const response = await axios.delete(`${PRODUCT_SERVER}/article`, {
+                ObjectId: product_id
+            })
+            console.log('response delete', response)
+        } catch (error) {
+            // Add error handling
+            console.error(error)
+        }
+    }
+
     
    
 
     render() {
+        console.log('props in edit', this.props)
         return (
             <UserLayout>
                <div>
@@ -332,7 +367,7 @@ class AddProduct extends Component {
                    <form onSubmit={(event)=> this.submitForm(event)}>
 
                   
-
+                   
 
                    <FileUpload
                             imagesHandler={(images)=> this.imagesHandler(images)}
@@ -345,7 +380,7 @@ class AddProduct extends Component {
                        change={(element)=> this.updateForm(element)}
                      />
 
-                    <FormField
+                        <FormField
                        id={'title'}
                        formdata={this.state.formdata.title}
                        change={(element)=> this.updateForm(element)}
@@ -428,10 +463,18 @@ class AddProduct extends Component {
                                 Nope
                             </div>
                             : null}
-                        <button onClick={(event) => this.submitForm(event)}>
-                            Add product
-                        </button>
 
+                        <div> 
+                        <button onClick={(event) => this.submitForm(event)}>
+                            Edit product
+                        </button>
+                        </div> 
+
+                        <div> 
+                            <button onClick={this.deleteProduct}>
+                        Delete product
+                        </button>
+                        </div> 
                    </form>
                </div>
 
@@ -448,4 +491,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(AddProduct);
+export default connect(mapStateToProps)(EditProduct);
