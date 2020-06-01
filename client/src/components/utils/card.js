@@ -42,7 +42,7 @@ class Card extends Component {
                     <div className="price">£{props.price}</div>
                     {props.user.userData && props.user.userData.isAdmin ? (
                         <div>
-                            <Link to={`/product_detail/${props._id}/edit`}>Edit product</Link>
+                            <Link to={{pathname: `/product_detail/${props._id}/edit`, product: props}}>Edit product</Link>
                         </div>
                     ) : null}
                     </div>

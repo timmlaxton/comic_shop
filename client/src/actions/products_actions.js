@@ -26,18 +26,7 @@ import {sortBy} from 'lodash-es'
 
 import { PRODUCT_SERVER } from "../components/utils/misc";
 
-export function editProductDetail(id) {
-  const request = axios
-  .put(`${PRODUCT_SERVER}//articles_by_id?id=${id}&type=single`)
-  .then((response) => {
-    return response.data[0];
-  });
 
-  return {
-    type: EDIT_PRODUCT_DETAIL,
-    payload: request,
-  };
-}
 
 export function getProductDetail(id) {
   const request = axios
@@ -133,6 +122,18 @@ export function addProduct(datatoSubmit) {
     payload: request,
   };
 }
+
+export function editProduct(id, datatoSubmit) {
+  const request = axios
+    .put(`${PRODUCT_SERVER}/articles/${id}`, datatoSubmit)
+    .then((response) => response.data);
+
+  return {
+    type: EDIT_PRODUCT_DETAIL,
+    payload: request,
+  };
+}
+
 
 export function getCharacters() {
   const request = axios

@@ -5,9 +5,10 @@ import { update, generateData, isFormValid, populateOptionFields, resetFields } 
 import FileUpload from '../../utils/Form/fileupload';
 import axios from 'axios'
 import {connect} from 'react-redux'
-import {getCharacters, getPublishers, getCatergorys, addProduct, clearProduct, getTitles } from '../../../actions/products_actions'
+import {getCharacters, getPublishers, getCatergorys, editProduct, clearProduct, getTitles } from '../../../actions/products_actions'
 import { PRODUCT_SERVER}  from '../../utils/misc'
 class EditProduct extends Component {
+
 
     state={
         formError:false,
@@ -261,13 +262,7 @@ class EditProduct extends Component {
         var formIsValid = isFormValid(this.state.formdata,'o')
 
         if(formIsValid){
-            this.props.dispatch(addProduct(dataToSubmit)).then(()=>{
-                if( this.props.products.addProduct.success){
-                    this.resetFieldHandler();
-                }else{
-                    this.setState({formError: true})
-                }
-            })
+            this.props.dispatch(editProduct(this.props.match.params.id, dataToSubmit)).then(()=> alert("update success")).catch(()=> this.setState({formError: true}))
         } else {
             this.setState({
                 formError: true
@@ -277,11 +272,10 @@ class EditProduct extends Component {
     
 
     componentDidMount(){
-        const formdata =  this.state.formdata;
-
         this.fetchProduct(this.props.match.params.id)
 
         this.props.dispatch(getCharacters()).then( response => {
+            const formdata =  this.state.formdata;
             const newFormData = populateOptionFields(formdata,this.props.products.characters, 'character');            
             this.updateFields(newFormData)
             
@@ -289,6 +283,7 @@ class EditProduct extends Component {
         })
 
         this.props.dispatch(getTitles()).then( response => {
+            const formdata =  this.state.formdata;
             const newFormData = populateOptionFields(formdata,this.props.products.titles, 'title');            
             this.updateFields(newFormData)
             
@@ -296,11 +291,13 @@ class EditProduct extends Component {
         })
 
         this.props.dispatch(getPublishers()).then( response => {
+            const formdata =  this.state.formdata;
             const newFormData = populateOptionFields(formdata,this.props.products.publishers, 'publisher');            
             this.updateFields(newFormData)          
         })
 
         this.props.dispatch(getCatergorys()).then( response => {
+            const formdata =  this.state.formdata;
             const newFormData = populateOptionFields(formdata,this.props.products.catergorys, 'catergory');            
             this.updateFields(newFormData)               
         })
@@ -312,15 +309,17 @@ class EditProduct extends Component {
             const response = await axios.get(`${PRODUCT_SERVER}/articles_by_id?id=${id}`)
             console.log('resposne', response)
             const formdata = JSON.parse(JSON.stringify(this.state.formdata))
-            formdata.Titles = formdata.name
-            formdata.amount = formdata.stock
+            // formdata.Titles = formdata.name
+            // formdata.amount = formdata.stock
+
             for (const [key, value] of Object.entries(response.data[0])) {
                 console.log('in loop', key, value)
-                if (Reflect.has(formdata, key)) {
-                    formdata[key].value = value
+                if (formdata[key] ) {
+                    formdata[key].value = value._id || value
+                    formdata[key].valid = !!value
                 }
             }
-            console.log('formdata?', formdata)
+           
             this.setState({
                 formdata
             })
@@ -341,13 +340,13 @@ class EditProduct extends Component {
         })
     }
 
-    deleteProduct = async () => {
+    deleteProduct = async (e) => {
+        e.preventDefault()
         const product_id = this.props.match.params.id
         try {
-            const response = await axios.delete(`${PRODUCT_SERVER}/article`, {
-                ObjectId: product_id
-            })
+            const response = await axios.delete(`${PRODUCT_SERVER}/articles/${product_id}`)
             console.log('response delete', response)
+            this.props.history.goBack()
         } catch (error) {
             // Add error handling
             console.error(error)
@@ -358,13 +357,14 @@ class EditProduct extends Component {
    
 
     render() {
+        console.log("========>", this.state.formdata)
         console.log('props in edit', this.props)
         return (
             <UserLayout>
                <div>
                    <h1>Add product</h1>
 
-                   <form onSubmit={(event)=> this.submitForm(event)}>
+                   <form>
 
                   
                    
