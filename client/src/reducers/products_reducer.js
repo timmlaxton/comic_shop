@@ -18,6 +18,7 @@
     CLEAR_PRODUCT,
     GET_PRODUCT_DETAIL,
     CLEAR_PRODUCT_DETAIL,  
+    EDIT_PRODUCT_DETAIL
 
     
 
@@ -74,6 +75,8 @@ export default function(state={},action){
         case GET_PRODUCT_DETAIL:
             return {...state, prodDetail: action.payload }
         case CLEAR_PRODUCT_DETAIL:
+            return {...state, prodDetail: action.payload }
+        case EDIT_PRODUCT_DETAIL:
             return {...state, prodDetail: action.payload }
            
             

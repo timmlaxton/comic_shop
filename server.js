@@ -110,7 +110,7 @@ app.post('/api/product/shop/comics',(req,res)=>{
 
 
 app.get('/api/product', async (req, res) => {
-    const {order = 'asc', sort = {}, limit = 20, page = 1, outOfStockOnly = 0, selectedDate} = req.query 
+    const { order = 'asc', sort = {}, limit = 20, page = 1, outOfStockOnly = 0, selectedDate } = req.query 
     const options = {
         order,
         sort,
@@ -133,6 +133,19 @@ app.get('/api/product', async (req, res) => {
     console.log('product pagination', response)
     res.send(response)
 })
+
+
+app.put('/api/product', async (req, res) => {
+    try {
+      var  product  = await Product.findById(req.params.id).exec();
+        product.set(req.body);
+        var result = await product.save(); 
+        resposne.send(result);  
+    } catch (error) {
+        resposne.status(400).send(error)
+    }
+});
+
 
 // By Sell
 app.get('/api/product/articles', (req,res)=> {

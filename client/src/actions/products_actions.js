@@ -19,10 +19,25 @@ import {
   CLEAR_PRODUCT,
   GET_PRODUCT_DETAIL,
   CLEAR_PRODUCT_DETAIL,
+  EDIT_PRODUCT_DETAIL,
 } from "./types";
 import {sortBy} from 'lodash-es'
 
 import { PRODUCT_SERVER } from "../components/utils/misc";
+import { response } from "express";
+
+export function editProductDetail(id) {
+  const request = axios
+  .put(`${PRODUCT_SERVER}//articles_by_id?id=${id}&type=single`)
+  .then((resposne) => {
+    return response.data[0];
+  });
+
+  return {
+    type: EDIT_PRODUCT_DETAIL,
+    payload: request,
+  };
+}
 
 export function getProductDetail(id) {
   const request = axios

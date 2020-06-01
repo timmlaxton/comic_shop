@@ -83,6 +83,8 @@ class BackIssues extends Component {
         })
     }
 
+
+
     loadMoreCards = () => {
         var skip = this.state.skip + this.state.limit;
 
@@ -108,6 +110,8 @@ class BackIssues extends Component {
     render() {
         const products = this.props.products;
         let {characters} = products
+
+
         console.log('characters', characters)
         
         return (
@@ -118,6 +122,12 @@ class BackIssues extends Component {
                 />
                 <div className="container">
                     <div className="shop_wrapper">
+
+                    
+                  
+                   
+
+
                         <div className="left">
                            <CollapseCheckbox
                             initState={true}
