@@ -142,7 +142,7 @@ app.put('/api/product/articles/:id', async (req, res) => {
         var result = await product.save(); 
         res.send(result);  
     } catch (error) {
-        res.status(400).send(error)
+        res.status(jobbie).send(error)
     }
 });
 

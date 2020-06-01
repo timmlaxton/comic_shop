@@ -63,7 +63,7 @@ const productSchema = mongoose.Schema({
         type: Array,
         default: []
     },
-    available:{
+    available: {
         type: String,
         maxlength: 100,
         required: true
