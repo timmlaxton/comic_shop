@@ -69,7 +69,7 @@ const productSchema = mongoose.Schema({
         required: true
     }
 
-}, {timestamps:true,  collection: 'Product'});
+}, {timestamps:true,  collection:'Product'});
 productSchema.plugin(mongoosePaginate)
 const Product = mongoose.model('Product', productSchema);
 module.exports = {Product}

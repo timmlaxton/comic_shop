@@ -331,7 +331,7 @@ class AddProduct extends Component {
 
                    <form onSubmit={(event)=> this.submitForm(event)}>
 
-                  console.log(=========>=======);
+                
                   
 
 

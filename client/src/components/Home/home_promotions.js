@@ -6,7 +6,7 @@ const HomePromotion = (props) => {
     const order = {
         img: 'images/featured/comicrack.jpg',
         lineOne: 'Standing Order',
-        lineTwo: 'Register an accoutn to start one today',
+        lineTwo: 'Register an account to start one today',
         linkTitle: 'Register Account',
         linkTo: '/register_login'
     }

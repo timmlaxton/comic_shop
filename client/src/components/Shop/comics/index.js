@@ -18,7 +18,7 @@ class BackIssues extends Component {
 
   state = {
       grid:"",
-      limit:100,
+      limit:1000,
       skip:0,
       filters: {
         character:[],
