@@ -4,7 +4,8 @@ import Login from './login';
 
 const RegisterLogin = () => {
     return (
-        <div><p>Please Login or Register a new account to purchase any comics</p>
+        <div className="register_message"><p>Please Login or Register a new account to purchase any comics</p>
+        <div> 
         <div className="page_wrapper"></div>
             <div className="container">
                 <div className="register_login_container">
@@ -27,7 +28,8 @@ const RegisterLogin = () => {
                     </div>
                 </div>
             </div>
-        </div>
+          </div>
+          </div>
     );
 };
 

@@ -200,6 +200,9 @@ select {
     display: table;
     background: #e1ddc3;
     margin-top: 10px;
+    position: absolute;
+    left: 300px;
+    
 }
 
 .card_link,
@@ -783,6 +786,11 @@ footer .business_nfo .nfo {
     font-weight: 300;
     font-size: 16px;
     width: 90%;
+}
+
+.register_message {
+    text-align: center;
+    font-size: 23px;
 }
 
 /*=============================
