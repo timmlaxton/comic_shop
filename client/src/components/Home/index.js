@@ -32,7 +32,7 @@ class Home extends Component {
                     title="Back Issues"
                     history={this.props.history}
                 />
-                 <HomePromotion/>
+                
                 <CardBlock
                     list={this.props.products.byTrades}
                     title="Trades"
